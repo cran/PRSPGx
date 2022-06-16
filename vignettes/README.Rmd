@@ -43,7 +43,7 @@ Windows 10 (R version 3.6.3)
 The CRAN package should be compatible with Windows and Mac operating systems.
 
 ## Installing Guide
-`PRSPGx` package requires R with version 3.6.3 or higher, which can be downloaded and installed from [CRAN](https://cran.r-project.org/). The source `PRSPGx` package can be downloaded from [here](https://tangzheng1.github.io/tanglab/software.html). 
+`PRSPGx` package requires R with version 3.6.3 or higher, which can be downloaded and installed from [CRAN](https://cran.r-project.org/).
 
 ### Package dependencies
 
@@ -52,7 +52,7 @@ Users should install the following packages prior to installing `PRSPGx`, from a
 ```
 install.packages(c('glmnet','gglasso','SGL','bigsnpr','bigstatsr','bigsparser',
 'bigparallelr','MCMCpack','Matrix','GIGrvg','bdsmatrix',
-'mvtnorm','lmtest','propagate','methods'))
+'mvtnorm','lmtest','propagate','methods','Rfast','matrixcalc'))
 ```
 
 The `PRSPGx` package functions with all packages in their latest versions as they appear on `CRAN` on July 9, 2021. The versions of software are, specifically:
@@ -73,13 +73,15 @@ mvtnorm (>= 1.1.0)
 propagate (>= 1.0.6)
 bigparallelr (>= 0.2.3)
 methods (>= 3.6.3)
+Rfast (>= 1.9.9)
+matrixcalc (>= 1.0-3)
 ```
 
 ### Package Installation
-After downloading `PRSPGx` package, unzip it and you will see `PRSPGx_0.1.0.tar.gz`. To install `PRSPGx`, type the following code from an `R` session:
+After downloading `PRSPGx` package, unzip it and you will see `PRSPGx_0.2.0.tar.gz`. To install `PRSPGx`, type the following code from an `R` session:
 
 ```
-install.package("PRSPGx_0.1.0.tar.gz", repos = NULL)
+install.package("PRSPGx_0.2.0.tar.gz", repos = NULL)
 library(PRSPGx)
 ```
 

@@ -14,4 +14,6 @@
 #' @importFrom methods as
 #' @importFrom stats coef cor lm rgamma rnorm sd cov
 #' @importFrom bigparallelr nb_cores
+#' @importFrom matrixcalc is.positive.definite
+#' @importFrom Rfast cova cora
 NULL

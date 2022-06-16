@@ -58,7 +58,7 @@ calculate_D <- function(PGx_GWAS, G_reference){
   meanT = PGx_GWAS$meanT; MAF <- PGx_GWAS$G_INFO$MAF
   varT = meanT*(1-meanT)
 
-  lefttop <- cor(G_reference); Sigma <- cov(G_reference)
+  lefttop <- cora(G_reference); Sigma <- cova(G_reference)
   righttop <- matrix(NA, ncol = M, nrow = M)
   for (i in 1:M) {
     for (j in 1:M) {
@@ -66,7 +66,7 @@ calculate_D <- function(PGx_GWAS, G_reference){
     }
   }
 
-  leftbottom <- righttop
+  leftbottom <- t(righttop)
 
   rightbottom <- matrix(NA, ncol = M, nrow = M)
   for (i in 1:M) {
@@ -131,12 +131,12 @@ update.once <- function(b.old, sigma2.old, psi.old, xi.old, rho.old, Psi.old, de
   v <- paras[1]; phi <- paras[2]; b1 = b2 = 1/2
 
   # update b = (beta, alpha)
-  Psi.old.inv <- Psi.Inv(psi.old, xi.old, rho.old)
+  Psi.old.inv <- Psi.Inv(psi.old, xi.old, rho.old, M)
   D.Psi.old.inv <- solve(D+Psi.old.inv, tol=1e-40)
 
   mu <- D.Psi.old.inv%*%b_hat; mu <- as.vector(mu)
-  Sigma0 <- sigma2.old/N*D.Psi.old.inv
-  Sigma0 <- nearPD(Sigma0, corr = FALSE); Sigma0 <- as.matrix(Sigma0$mat)
+  Sigma0 <- sigma2.old/N*D.Psi.old.inv; Sigma0 <- round(Sigma0, 5)
+  if(is.positive.definite(Sigma0) == FALSE){Sigma0 <- nearPD(Sigma0, corr = FALSE); Sigma0 <- as.matrix(Sigma0$mat)}
   Sigma0_chol <- chol(Sigma0)
   b.new <- mu + as.vector(rnorm(length(mu))%*%Sigma0_chol)
 
@@ -183,7 +183,7 @@ update.once <- function(b.old, sigma2.old, psi.old, xi.old, rho.old, Psi.old, de
   return(re)
 }
 
-Psi.Inv <- function(psi,xi,rho){
+Psi.Inv <- function(psi,xi,rho,n){
   n <- length(psi)
   Psi_inv = matrix(0, ncol=2*n, nrow=2*n)
 
