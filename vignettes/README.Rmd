@@ -55,7 +55,7 @@ install.packages(c('glmnet','gglasso','SGL','bigsnpr','bigstatsr','bigsparser',
 'mvtnorm','lmtest','propagate','methods','Rfast','matrixcalc'))
 ```
 
-The `PRSPGx` package functions with all packages in their latest versions as they appear on `CRAN` on July 9, 2021. The versions of software are, specifically:
+The `PRSPGx` package functions with all packages in their latest versions as they appear on `CRAN` on July 18, 2022. The versions of software are, specifically:
 
 ```
 gglasso (>= 1.5.0)
@@ -78,10 +78,10 @@ matrixcalc (>= 1.0-3)
 ```
 
 ### Package Installation
-After downloading `PRSPGx` package, unzip it and you will see `PRSPGx_0.2.0.tar.gz`. To install `PRSPGx`, type the following code from an `R` session:
+After downloading `PRSPGx` package, unzip it and you will see `PRSPGx_0.3.0.tar.gz`. To install `PRSPGx`, type the following code from an `R` session:
 
 ```
-install.package("PRSPGx_0.2.0.tar.gz", repos = NULL)
+install.package("PRSPGx_0.3.0.tar.gz", repos = NULL)
 library(PRSPGx)
 ```
 
@@ -260,9 +260,14 @@ where $\phi$ is a global scaling parameter that is shared across all effect size
 knitr::include_graphics("algorithm.jpeg")
 ```
 
-```{r, echo=TRUE, eval=TRUE}
+```{r, echo=TRUE, eval=FALSE}
 paras = c(3, 5)
-coef_est <- PRS_PGx_Bayes(PGx_GWAS, G_reference, n.itr = 10, n.burnin = 5, n.gap = 1, paras = paras)
+coef_est <- PRS_PGx_Bayes(PGx_GWAS, G_reference, n.itr = 100, n.burnin = 50, n.gap = 5, paras = paras)
+```
+
+```{r, echo=FALSE, eval=TRUE}
+githubURL <- "https://github.com/zhaiso1/PRSPGx/blob/main/coef_est_Bayes.rda?raw=true"
+load(url(githubURL))
 ```
 
 ```{r}

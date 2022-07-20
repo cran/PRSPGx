@@ -91,9 +91,13 @@ run_eval(coef_est, Y_test, T_test, G_test)
 ## ---- out.width = "500px", echo=FALSE, fig.cap="Table 2: PRS-PGx-Bayes algorithm."----
 knitr::include_graphics("algorithm.jpeg")
 
-## ---- echo=TRUE, eval=TRUE----------------------------------------------------
-paras = c(3, 5)
-coef_est <- PRS_PGx_Bayes(PGx_GWAS, G_reference, n.itr = 10, n.burnin = 5, n.gap = 1, paras = paras)
+## ---- echo=TRUE, eval=FALSE---------------------------------------------------
+#  paras = c(3, 5)
+#  coef_est <- PRS_PGx_Bayes(PGx_GWAS, G_reference, n.itr = 100, n.burnin = 50, n.gap = 5, paras = paras)
+
+## ---- echo=FALSE, eval=TRUE---------------------------------------------------
+githubURL <- "https://github.com/zhaiso1/PRSPGx/blob/main/coef_est_Bayes.rda?raw=true"
+load(url(githubURL))
 
 ## -----------------------------------------------------------------------------
 ## Performance Evaluation

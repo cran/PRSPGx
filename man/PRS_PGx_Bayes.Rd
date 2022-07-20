@@ -42,7 +42,7 @@ PRS-PGx-Bayes only needs PGx summary statistics and external reference genotype
 \donttest{
 data(PRSPGx.example); attach(PRSPGx.example)
 paras = c(3, 5)
-coef_est <- PRS_PGx_Bayes(PGx_GWAS, G_reference, paras = paras)
+coef_est <- PRS_PGx_Bayes(PGx_GWAS, G_reference, paras = paras, n.itr = 10, n.burnin = 5, n.gap = 1)
 summary(coef_est$coef.G)
 summary(coef_est$coef.TG)
 }
